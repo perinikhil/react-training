@@ -1,0 +1,16 @@
+body {
+	margin: 0;
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+}
+
+.container {
+	width: 580px;
+	margin: 20px auto;
+}
+
+.listing-item {
+	margin-bottom: 16px;
+}

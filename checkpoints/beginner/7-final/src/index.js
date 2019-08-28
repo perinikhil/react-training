@@ -1,0 +1,42 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import HotelCard from './components/HotelCard';
+import PersuasionAlert from './components/PersuasionAlert';
+import TypeFilter from './components/TypeFilter';
+import { accommodationList } from './data';
+import './index.css';
+
+function App() {
+  const [filterHotels, setFilterHotels] = React.useState(false);
+
+  const handleFilterChange = (checked) => {
+    setFilterHotels(checked);
+  };
+
+  return (
+    <div className="container">
+      <TypeFilter onChange={handleFilterChange} />
+
+      {
+        accommodationList.map(item => {
+          if (item.accommodationType !== 'hotel' && filterHotels) return null;
+
+          return (
+            <div className="listing-item">
+              <HotelCard
+                title={item.title}
+                description={item.description}
+                imageUrl={item.imageUrl}
+                locations={item.locations}
+              >
+                { item.promoted && <PersuasionAlert name={item.title} /> }
+              </HotelCard>
+            </div>
+          );
+        })
+      }
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
