@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HotelCard from './components/HotelCard';
+import HotelCard from './components/HotelCard/HotelCard';
 import './index.css';
 
 function App() {

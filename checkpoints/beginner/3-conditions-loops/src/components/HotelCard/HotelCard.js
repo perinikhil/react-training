@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './HotelCard.css';
 
 function HotelCard(props) {
@@ -18,5 +20,11 @@ function HotelCard(props) {
     </div>
   );
 }
+
+HotelCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired
+};
 
 export default HotelCard;

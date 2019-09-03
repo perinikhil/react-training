@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './TypeFilter.css';
 
 function TypeFilter(props) {
@@ -15,5 +17,9 @@ function TypeFilter(props) {
     </label>
   );
 }
+
+TypeFilter.propTypes = {
+  onChange: PropTypes.func.isRequired
+};
 
 export default TypeFilter;

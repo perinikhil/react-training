@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './PersuasionAlert.css';
 
 function PersuasionAlert(props) {
@@ -8,5 +10,9 @@ function PersuasionAlert(props) {
     </div>
   );
 }
+
+PersuasionAlert.propTypes = {
+  name: PropTypes.string.isRequired
+};
 
 export default PersuasionAlert;

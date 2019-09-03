@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HotelCard from './components/HotelCard';
-import PersuasionAlert from './components/PersuasionAlert';
-import TypeFilter from './components/TypeFilter';
+
+import HotelCard from './components/HotelCard/HotelCard';
+import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
+import TypeFilter from './components/TypeFilter/TypeFilter';
 import { accommodationList } from './data';
 import './index.css';
 
@@ -29,7 +30,7 @@ function App() {
                 imageUrl={item.imageUrl}
                 locations={item.locations}
               >
-                { item.promoted && <PersuasionAlert name={item.title} /> }
+                { Boolean(item.promoted) && <PersuasionAlert name={item.title} /> }
               </HotelCard>
             </div>
           );
