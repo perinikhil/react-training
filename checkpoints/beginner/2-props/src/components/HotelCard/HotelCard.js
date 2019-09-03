@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './HotelCard.css';
 
 function HotelCard() {

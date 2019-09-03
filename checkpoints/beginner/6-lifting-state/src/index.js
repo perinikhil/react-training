@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HotelCard from './components/HotelCard';
-import PersuasionAlert from './components/PersuasionAlert';
+import HotelCard from './components/HotelCard/HotelCard';
+import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
 import './index.css';
 
 function App() {

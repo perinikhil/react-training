@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Heart from '../../icons/Heart';
 import HeartOutline from '../../icons/HeartOutline';
 import './HotelCard.css';
@@ -25,7 +27,7 @@ function HotelCard(props) {
           </button>
         </div>
         {
-          locations && (
+          Boolean(locations) && locations.length > 0 && (
             <ul className="hotel-card__locations">
               {
                 locations.map(location => <li className="hotel-card__location">{ location }</li>)
@@ -39,5 +41,16 @@ function HotelCard(props) {
     </div>
   );
 }
+
+HotelCard.defaultProps = {
+  locations: []
+};
+
+HotelCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  locations: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default HotelCard;
