@@ -1,24 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { context } from '../Toast/ToastProvider';
 import Heart from '../../icons/Heart';
 import HeartOutline from '../../icons/HeartOutline';
 import './HotelCard.css';
 
 function HotelCard(props) {
   const [favorite, setFavorite] = React.useState(false);
-  const { show } = React.useContext(context);
   const { title, description, locations, imageUrl, children } = props;
   const alt = `${title} photo`;
 
   const handleFavorite = () => {
-    const nextFavorite = !favorite;
-    const action = nextFavorite ? 'added to favorites' : 'removed from favorties';
-
-    setFavorite(nextFavorite);
-
-    show({ text: `${title} ${action}` });
+    setFavorite(!favorite);
   };
 
   return (

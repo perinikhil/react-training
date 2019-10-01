@@ -1,0 +1,10 @@
+.type-filter {
+	display: inline-flex;
+	align-items: center;
+}
+
+.type-filter__label {
+	margin-left: 4px;
+}
+
+
