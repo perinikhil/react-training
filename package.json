@@ -4,11 +4,15 @@
   "private": true,
   "dependencies": {
     "@bookingcom/bui-react": "^3.6.7",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:frontend": "react-scripts start",
+    "start:backend": "node .scripts/server.js",
+    "start": "yarn start:frontend & yarn start:backend",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
