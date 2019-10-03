@@ -23,13 +23,13 @@ function HotelCard(props) {
   };
 
   return (
-    <Link className="hotel-card" to={to}>
+    <div className="hotel-card">
       <div className="hotel-card__side">
         <img src={imageUrl} className="hotel-card__image" alt={alt} />
       </div>
       <div className="hotel-card__inner">
         <div className="hotel-card__top">
-          <div className="hotel-card__title">{ title }</div>
+          <Link className="hotel-card__title" to={to}>{ title }</Link>
           <button className="hotel-card__favorite" onClick={handleFavorite}>
             { favorite ? <Heart /> : <HeartOutline /> }
           </button>
@@ -47,7 +47,7 @@ function HotelCard(props) {
         { Boolean(children) && <div className="hotel-card__content">{ children }</div> }
         <button className="hotel-card__button">Show details</button>
       </div>
-    </Link>
+    </div>
   );
 }
 
