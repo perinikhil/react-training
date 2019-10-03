@@ -1,5 +1,11 @@
 ## React training starter
 
+### Slides
+
+Beginner: go/react-training-beginner
+
+Advanced: go/react-training-advanced
+
 ### Starting the project
 
 ```
