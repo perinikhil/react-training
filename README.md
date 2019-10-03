@@ -20,4 +20,6 @@ npm install && npm start
 
 ### Checkpoints
 
-If you feel stuck or lost during the training - we've got you covered with checkpoints for each task. Just grab an src folder from any checkpoints and put it instead of the main src folder.  
+If you feel stuck or lost during the training - we've got you covered with checkpoints for each task.
+
+Run `yarn checkpoint` to get more information about navigating them.  

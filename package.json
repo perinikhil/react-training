@@ -6,6 +6,7 @@
     "@bookingcom/bui-react": "^3.6.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.2"
@@ -14,9 +15,8 @@
     "start:frontend": "react-scripts start",
     "start:backend": "node .scripts/server.js",
     "start": "yarn start:frontend & yarn start:backend",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "checkpoint": "node .scripts/checkpoint.js",
+    "clean": "rm -rf temp"
   },
   "eslintConfig": {
     "extends": "react-app"
