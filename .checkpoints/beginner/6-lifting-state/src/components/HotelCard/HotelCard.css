@@ -89,7 +89,7 @@
 }
 
 .hotel-card__favorite {
-	flex-shrink: 1;
+	flex-shrink: 0;
 	background: none;
 	padding: 0;
 	border: none;

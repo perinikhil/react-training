@@ -16,7 +16,7 @@ app.get('/api/accommodations/', (req, res) => {
     const formattedTitle = item.title.toLowerCase();
     const formattedQuery = query && query.toLowerCase();
 
-    if (formattedQuery && !formattedTitle.startsWith(formattedQuery)) return false;
+    if (formattedQuery && !formattedTitle.includes(formattedQuery)) return false;
     if (hotelsOnly && item.accommodationType !== 'hotel') return false;
     return true;
   });

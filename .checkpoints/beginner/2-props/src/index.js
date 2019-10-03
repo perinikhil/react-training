@@ -6,7 +6,11 @@ import './index.css';
 function App() {
   return (
     <div className="container">
-      <HotelCard />
+      <HotelCard
+        title="Hotel Ubud"
+        description="Hotel Ubud offers a peaceful retreat amidst lush tropical gardens, a 3-minute walk from Ubud Palace."
+        imageUrl="https://picsum.photos/id/653/300/300"
+      />
     </div>
   );
 }

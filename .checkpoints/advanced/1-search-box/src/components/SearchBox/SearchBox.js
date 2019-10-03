@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchBox.css';
 
 function SearchBox(props, ref) {
@@ -22,5 +23,10 @@ function SearchBox(props, ref) {
     </div>
   );
 }
+
+SearchBox.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default React.forwardRef(SearchBox);

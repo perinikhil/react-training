@@ -11,6 +11,14 @@ body {
 	margin: 20px auto;
 }
 
+.container__form-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 12px;
+	margin-bottom: 32px;
+}
+
 .listing-item {
 	margin-bottom: 16px;
 }

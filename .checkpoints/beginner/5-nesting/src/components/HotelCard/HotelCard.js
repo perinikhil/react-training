@@ -7,8 +7,7 @@ import './HotelCard.css';
 
 function HotelCard(props) {
   const [favorite, setFavorite] = React.useState(false);
-  const { title, description, locations, imageUrl } = props;
-  const alt = `${title} photo`;
+  const { title, description, locations, imageUrl, children } = props;
 
   const handleFavorite = () => {
     setFavorite(!favorite);
@@ -17,7 +16,7 @@ function HotelCard(props) {
   return (
     <div className="hotel-card">
       <div className="hotel-card__side">
-        <img src={imageUrl} className="hotel-card__image" alt={alt} />
+        <img src={imageUrl} className="hotel-card__image" alt="" />
       </div>
       <div className="hotel-card__inner">
         <div className="hotel-card__top">
@@ -36,6 +35,7 @@ function HotelCard(props) {
           )
         }
         <div className="hotel-card__description">{ description }</div>
+        { Boolean(children) && <div className="hotel-card__content">{ children }</div> }
         <button className="hotel-card__button">Show details</button>
       </div>
     </div>
@@ -50,7 +50,11 @@ HotelCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  locations: PropTypes.arrayOf(PropTypes.string)
+  locations: PropTypes.arrayOf(PropTypes.string),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 };
 
 export default HotelCard;

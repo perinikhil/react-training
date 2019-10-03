@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HotelCard from './components/HotelCard/HotelCard';
+import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
 import './index.css';
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
         description="Hotel Ubud offers a peaceful retreat amidst lush tropical gardens, a 3-minute walk from Ubud Palace."
         imageUrl="https://picsum.photos/id/653/300/300"
         locations={['Bali', 'Sayan', 'Ubud']}
-      />
+      >
+        <PersuasionAlert name="Hotel Ubud" />
+      </HotelCard>
     </div>
   );
 }

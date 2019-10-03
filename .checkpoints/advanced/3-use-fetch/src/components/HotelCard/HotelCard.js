@@ -10,11 +10,10 @@ function HotelCard(props) {
   const [favorite, setFavorite] = React.useState(false);
   const { show } = React.useContext(context);
   const { title, description, locations, imageUrl, children } = props;
-  const alt = `${title} photo`;
 
   const handleFavorite = () => {
     const nextFavorite = !favorite;
-    const action = nextFavorite ? 'added to favorites' : 'removed from favorties';
+    const action = nextFavorite ? 'added to favorites' : 'removed from favorites';
 
     setFavorite(nextFavorite);
 
@@ -24,7 +23,7 @@ function HotelCard(props) {
   return (
     <div className="hotel-card">
       <div className="hotel-card__side">
-        <img src={imageUrl} className="hotel-card__image" alt={alt} />
+        <img src={imageUrl} className="hotel-card__image" alt="" />
       </div>
       <div className="hotel-card__inner">
         <div className="hotel-card__top">

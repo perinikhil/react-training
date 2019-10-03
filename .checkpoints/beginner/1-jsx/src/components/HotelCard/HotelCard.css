@@ -19,39 +19,6 @@
 	font-weight: bold;
 }
 
-.hotel-card__locations {
-	color: #707070;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.hotel-card__location {
-	display: inline-block;
-	padding-left: 12px;
-	position: relative;
-}
-
-.hotel-card__location:before {
-	content: '';
-	width: 2px;
-	height: 2px;
-	position: absolute;
-	background: currentColor;
-	border-radius: 50%;
-	top: 50%;
-	left: 5px;
-	transform: translateY(-50%);
-}
-
-.hotel-card__location:first-child {
-	padding-left: 0;
-}
-
-.hotel-card__location:first-child:before {
-	content: none;
-}
-
 .hotel-card__description {
 	margin-top: 12px;
 }

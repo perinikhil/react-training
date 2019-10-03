@@ -18,15 +18,14 @@ const types = getSubDirs(checkpointsPath);
 if (!type || !checkpointName) {
   console.log('\n🏁 Navigating the checkpoints:');
   console.log('\x1b[32m%s\x1b[0m', 'yarn checkpoint [type] [name]\n');
-  console.log('Examples of checkpoints navigation:');
-  console.log('\x1b[32m%s\x1b[0m', 'yarn checkpoint beginner 1-jsx');
+  console.log('Example of checkpoints navigation:');
   console.log('\x1b[32m%s\x1b[0m', 'yarn checkpoint beginner jsx\n');
   console.log('Available types:');
   console.log('\x1b[32m%s\x1b[0m', `${types.join(', ')}\n`);
 
   types.forEach((type) => {
     const typePath = path.join(checkpointsPath, type);
-    const checkpoints = getSubDirs(typePath).map(checkpoint => checkpoint.split('-')[1]);
+    const checkpoints = getSubDirs(typePath).map(checkpoint => checkpoint.split('-').slice(1).join('-'));
 
     console.log(`Available ${type} names:`);
     console.log('\x1b[32m%s\x1b[0m', `${checkpoints.join(', ')}\n`);
@@ -48,7 +47,7 @@ if (fs.existsSync(tempPath)) {
     This way we ensure you don't lose your previously saved work unintentionally.
   `)
 }
-fs.moveSync(srcPath, tempPath);
+fs.moveSync(srcPath, path.join(tempPath, 'src'));
 fs.removeSync(srcPath);
 fs.copySync(checkpointPath, rootPath);
 

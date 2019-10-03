@@ -2,6 +2,14 @@
 	padding: 16px;
 	border: 1px solid #e0e0e0;
 	display: flex;
+	text-decoration: none;
+	color: inherit;
+	background: #fff;
+	transition: background-color 0.15s ease-in-out;
+}
+
+.hotel-card:hover {
+	background: #fafafa;
 }
 
 .hotel-card__side {

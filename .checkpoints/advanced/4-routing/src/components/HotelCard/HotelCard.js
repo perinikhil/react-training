@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { context } from '../Toast/ToastProvider';
 import Heart from '../../icons/Heart';
@@ -9,7 +10,7 @@ import './HotelCard.css';
 function HotelCard(props) {
   const [favorite, setFavorite] = React.useState(false);
   const { show } = React.useContext(context);
-  const { title, description, locations, imageUrl, children } = props;
+  const { title, description, locations, imageUrl, children, to } = props;
   const alt = `${title} photo`;
 
   const handleFavorite = () => {
@@ -22,7 +23,7 @@ function HotelCard(props) {
   };
 
   return (
-    <div className="hotel-card">
+    <Link className="hotel-card" to={to}>
       <div className="hotel-card__side">
         <img src={imageUrl} className="hotel-card__image" alt={alt} />
       </div>
@@ -46,7 +47,7 @@ function HotelCard(props) {
         { Boolean(children) && <div className="hotel-card__content">{ children }</div> }
         <button className="hotel-card__button">Show details</button>
       </div>
-    </div>
+    </Link>
   );
 }
 

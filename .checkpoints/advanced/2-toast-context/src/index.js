@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Link from '@bookingcom/bui-react/components/Link';
 
+import ToastProvider from './components/Toast/ToastProvider';
 import HotelCard from './components/HotelCard/HotelCard';
 import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
 import SearchBox from "./components/SearchBox/SearchBox";
@@ -42,37 +43,39 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <SearchBox value={query} onChange={handleSearchChange} ref={searchBoxRef} />
+    <ToastProvider>
+      <div className="container">
+        <SearchBox value={query} onChange={handleSearchChange} ref={searchBoxRef} />
 
-      <div className="container__form-row">
-        <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
-        { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
+        <div className="container__form-row">
+          <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
+          { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
+        </div>
+
+        {
+          accommodationList.map(item => {
+            const formattedTitle = item.title.toLowerCase();
+            const formattedSearchValue = query.toLowerCase();
+
+            if (!formattedTitle.includes(formattedSearchValue)) return null;
+            if (item.accommodationType !== 'hotel' && hotelsOnly) return null;
+
+            return (
+              <div className="listing-item" key={item.id}>
+                <HotelCard
+                  title={item.title}
+                  description={item.description}
+                  imageUrl={item.imageUrl}
+                  locations={item.locations}
+                >
+                  { Boolean(item.promoted) && <PersuasionAlert name={item.title} /> }
+                </HotelCard>
+              </div>
+            );
+          })
+        }
       </div>
-
-      {
-        accommodationList.map(item => {
-          const formattedTitle = item.title.toLowerCase();
-          const formattedSearchValue = query.toLowerCase();
-
-          if (!formattedTitle.startsWith(formattedSearchValue)) return null;
-          if (item.accommodationType !== 'hotel' && hotelsOnly) return null;
-
-          return (
-            <div className="listing-item" key={item.id}>
-              <HotelCard
-                title={item.title}
-                description={item.description}
-                imageUrl={item.imageUrl}
-                locations={item.locations}
-              >
-                { Boolean(item.promoted) && <PersuasionAlert name={item.title} /> }
-              </HotelCard>
-            </div>
-          );
-        })
-      }
-    </div>
+    </ToastProvider>
   );
 }
 

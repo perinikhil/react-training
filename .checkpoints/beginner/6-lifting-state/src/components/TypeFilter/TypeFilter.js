@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './TypeFilter.css';
 
 function TypeFilter(props) {
-  const { onChange, value } = props;
+  const { onChange } = props;
 
   const handleChange = (event) => {
     onChange(event.currentTarget.checked);
@@ -12,7 +12,7 @@ function TypeFilter(props) {
 
   return (
     <label className="type-filter">
-      <input type="checkbox" name="hotelType" checked={value} onChange={handleChange}  />
+      <input type="checkbox" name="hotelType" onChange={handleChange}  />
       <span className="type-filter__label">Show hotels only</span>
     </label>
   );

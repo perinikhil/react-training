@@ -13,10 +13,16 @@
 	width: 160px;
 }
 
+.hotel-card__top {
+	display: flex;
+	align-items: center;
+}
+
 .hotel-card__title {
 	font-size: 20px;
 	line-height: 28px;
 	font-weight: bold;
+	flex-grow: 1;
 }
 
 .hotel-card__locations {
@@ -76,4 +82,15 @@
 
 .hotel-card__button:focus {
 	box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.3);
+}
+
+.hotel-card__favorite {
+	flex-shrink: 1;
+	background: none;
+	padding: 0;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	cursor: pointer;
+	margin-left: 16px;
 }

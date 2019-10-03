@@ -62,6 +62,10 @@
 	margin-top: 12px;
 }
 
+.hotel-card__content {
+	margin-top: 12px;
+}
+
 .hotel-card__button {
 	padding: 8px 16px;
 	background: #0077cc;
