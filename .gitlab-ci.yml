@@ -1,0 +1,22 @@
+stages:
+  - deploy
+
+image: ricardobeat/centos7-fe-build:latest
+
+pages:
+  stage: deploy
+
+  script:
+    - mv public _public
+    - cp -R .scripts/landing public
+
+  artifacts:
+    expire_in: 30d
+    paths:
+      - public
+
+  tags:
+    - docker
+
+  only
+    - master
