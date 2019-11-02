@@ -1,4 +1,6 @@
-## React training starter
+## React training
+
+https://training.pages.booking.com/react-training/
 
 ### Slides
 
