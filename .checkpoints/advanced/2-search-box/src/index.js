@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Link from '@bookingcom/bui-react/components/Link';
 
-import ToastProvider from './components/Toast/ToastProvider';
 import HotelCard from './components/HotelCard/HotelCard';
 import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
 import SearchBox from "./components/SearchBox/SearchBox";
 import TypeFilter from './components/TypeFilter/TypeFilter';
 import GuestField from './components/GuestField/GuestField';
-import useFetch from './hooks/useFetch';
+import { accommodationList } from './data';
 import './index.css';
 
 const INITIAL_STATE = { query: '', hotelsOnly: false };
@@ -29,13 +28,6 @@ function reducer(state, action) {
 function App() {
   const searchBoxRef = React.useRef(null);
   const [{ query, hotelsOnly }, dispatch] = React.useReducer(reducer, INITIAL_STATE);
-  const baseUrl = 'http://localhost:3001/api/accommodations/';
-  const params = [];
-
-  if (query) params.push(`query=${query}`);
-  if (hotelsOnly) params.push('hotelsOnly=1');
-
-  const data = useFetch(`${baseUrl}?${params.join('&')}`);
 
   const handleFilterChange = (checked) => {
     dispatch({ type: 'setHotelsOnly', payload: checked });
@@ -51,35 +43,39 @@ function App() {
   };
 
   return (
-    <ToastProvider>
-      <div className="container">
-        <SearchBox value={query} onChange={handleSearchChange} ref={searchBoxRef} />
+    <div className="container">
+      <SearchBox value={query} onChange={handleSearchChange} ref={searchBoxRef} />
 
-        <div className="container__form-row">
-          <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
-          { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
-        </div>
-
-        <GuestField />
-
-        {
-          data && data.map(item => {
-            return (
-              <div className="listing-item" key={item.id}>
-                <HotelCard
-                  title={item.title}
-                  description={item.description}
-                  imageUrl={item.imageUrl}
-                  locations={item.locations}
-                >
-                  { Boolean(item.promoted) && <PersuasionAlert name={item.title} /> }
-                </HotelCard>
-              </div>
-            );
-          })
-        }
+      <div className="container__form-row">
+        <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
+        { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
       </div>
-    </ToastProvider>
+
+      <GuestField />
+
+      {
+        accommodationList.map(item => {
+          const formattedTitle = item.title.toLowerCase();
+          const formattedSearchValue = query.toLowerCase();
+
+          if (!formattedTitle.includes(formattedSearchValue)) return null;
+          if (item.accommodationType !== 'hotel' && hotelsOnly) return null;
+
+          return (
+            <div className="listing-item" key={item.id}>
+              <HotelCard
+                title={item.title}
+                description={item.description}
+                imageUrl={item.imageUrl}
+                locations={item.locations}
+              >
+                { Boolean(item.promoted) && <PersuasionAlert name={item.title} /> }
+              </HotelCard>
+            </div>
+          );
+        })
+      }
+    </div>
   );
 }
 

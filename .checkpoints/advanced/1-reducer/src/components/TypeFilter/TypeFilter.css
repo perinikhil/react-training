@@ -1,0 +1,11 @@
+.type-filter {
+	margin-bottom: 32px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.type-filter__label {
+	margin-left: 4px;
+}
+
+

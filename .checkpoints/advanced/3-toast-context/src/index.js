@@ -8,7 +8,7 @@ import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
 import SearchBox from "./components/SearchBox/SearchBox";
 import TypeFilter from './components/TypeFilter/TypeFilter';
 import GuestField from './components/GuestField/GuestField';
-import useFetch from './hooks/useFetch';
+import { accommodationList } from './data';
 import './index.css';
 
 const INITIAL_STATE = { query: '', hotelsOnly: false };
@@ -29,13 +29,6 @@ function reducer(state, action) {
 function App() {
   const searchBoxRef = React.useRef(null);
   const [{ query, hotelsOnly }, dispatch] = React.useReducer(reducer, INITIAL_STATE);
-  const baseUrl = 'http://localhost:3001/api/accommodations/';
-  const params = [];
-
-  if (query) params.push(`query=${query}`);
-  if (hotelsOnly) params.push('hotelsOnly=1');
-
-  const data = useFetch(`${baseUrl}?${params.join('&')}`);
 
   const handleFilterChange = (checked) => {
     dispatch({ type: 'setHotelsOnly', payload: checked });
@@ -63,7 +56,13 @@ function App() {
         <GuestField />
 
         {
-          data && data.map(item => {
+          accommodationList.map(item => {
+            const formattedTitle = item.title.toLowerCase();
+            const formattedSearchValue = query.toLowerCase();
+
+            if (!formattedTitle.includes(formattedSearchValue)) return null;
+            if (item.accommodationType !== 'hotel' && hotelsOnly) return null;
+
             return (
               <div className="listing-item" key={item.id}>
                 <HotelCard
