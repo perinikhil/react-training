@@ -14,7 +14,7 @@
   "scripts": {
     "start:frontend": "react-scripts start",
     "start:backend": "node .scripts/server.js",
-    "start": "yarn start:frontend & yarn start:backend",
+    "start": "npm run start:frontend & npm run start:backend",
     "checkpoint": "node .scripts/checkpoint.js",
     "clean": "rm -rf temp"
   },
