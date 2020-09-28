@@ -4,9 +4,17 @@ https://training.pages.booking.com/react-training/
 
 ### Slides
 
-Beginner: go/react-training-beginner
+Level 1: go/react-training-beginner
 
-Advanced: go/react-training-advanced
+Level 2: go/react-training-advanced
+
+### API
+
+Accommodations list:
+https://b-react-training.vercel.app/api/accommodations/
+
+Accommodation: 
+https://b-react-training.vercel.app/api/accommodations/1
 
 ### Starting the project
 

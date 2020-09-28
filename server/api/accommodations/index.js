@@ -1,13 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const data = require('./data');
+const data = require('../../data');
 
-const app = express();
-const port = 3001;
-
-app.use(cors())
-
-app.get('/api/accommodations/', (req, res) => {
+module.exports = (req, res) => {
   const { query, hotelsOnly } = req.query;
 
   const result = Object.keys(data.accommodationList).map(id => {
@@ -22,14 +15,4 @@ app.get('/api/accommodations/', (req, res) => {
   });
 
   res.send(result);
-});
-
-app.get('/api/accommodations/:id/', (req, res) => {
-  const { id } = req.params;
-
-  res.send(data.accommodationList[id]);
-});
-
-app.listen(port, () => console.log('API is available at localhost:3001/api/accommodations/ and localhost:3001/api/accommodations/:id'));
-
-
+}

@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@bookingcom/bui-react": "^3.6.7",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
     "fs-extra": "^8.1.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -13,8 +11,7 @@
   },
   "scripts": {
     "start:frontend": "react-scripts start",
-    "start:backend": "node .scripts/server.js",
-    "start": "npm run start:frontend & npm run start:backend",
+    "start": "npm run start:frontend",
     "checkpoint": "node .scripts/checkpoint.js",
     "clean": "rm -rf temp"
   },
