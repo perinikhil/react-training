@@ -49,7 +49,7 @@ function App() {
 
         <div className="container__form-row">
           <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
-          { (query || hotelsOnly) && <a onClick={handleClear} text="Clear" /> }
+          { (query || hotelsOnly) && <a onClick={handleClear}>Clear</a>
         </div>
 
         <GuestField />
