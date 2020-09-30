@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Link from '@bookingcom/bui-react/components/Link';
 
 import ToastProvider from './components/Toast/ToastProvider';
 import HotelCard from './components/HotelCard/HotelCard';
@@ -29,7 +28,7 @@ function reducer(state, action) {
 function App() {
   const searchBoxRef = React.useRef(null);
   const [{ query, hotelsOnly }, dispatch] = React.useReducer(reducer, INITIAL_STATE);
-  const baseUrl = 'http://localhost:3001/api/accommodations/';
+  const baseUrl = 'https://b-react-training.vercel.app/api/accommodations/';
   const params = [];
 
   if (query) params.push(`query=${query}`);
@@ -57,7 +56,7 @@ function App() {
 
         <div className="container__form-row">
           <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
-          { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
+          { (query || hotelsOnly) && <button onClick={handleClear}>Clear</button> }
         </div>
 
         <GuestField />
