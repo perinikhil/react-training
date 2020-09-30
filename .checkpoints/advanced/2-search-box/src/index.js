@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Link from '@bookingcom/bui-react/components/Link';
 
 import HotelCard from './components/HotelCard/HotelCard';
 import PersuasionAlert from './components/PersuasionAlert/PersuasionAlert';
@@ -48,7 +47,7 @@ function App() {
 
       <div className="container__form-row">
         <TypeFilter onChange={handleFilterChange} value={hotelsOnly} />
-        { (query || hotelsOnly) && <Link onClick={handleClear} text="Clear" /> }
+        { (query || hotelsOnly) && <a onClick={handleClear} text="Clear" /> }
       </div>
 
       <GuestField />
