@@ -28,7 +28,7 @@ function reducer(state, action) {
 function App() {
   const searchBoxRef = React.useRef(null);
   const [{ query, hotelsOnly }, dispatch] = React.useReducer(reducer, INITIAL_STATE);
-  const baseUrl = 'http://localhost:3001/api/accommodations/';
+  const baseUrl = 'https://b-react-training.vercel.app/api/accommodations/';
   const params = [];
 
   if (query) params.push(`query=${query}`);
